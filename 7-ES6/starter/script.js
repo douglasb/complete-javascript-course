@@ -202,3 +202,41 @@ for (let [key, value] of question.entries()) {
 
 // const ans = parseInt(prompt('Write the correct answer'));
 // console.log(question.get(ans === question.get('correct')));
+
+
+// Classes -- are NOT hoisted
+
+//A JavaScript class is a type of function. Classes are declared with the class keyword. We will use function expression syntax to initialize a function and class expression syntax to initialize a class. ... With prototypes, any function can become a constructor instance using the new keyword.
+
+// ES5 
+
+var Person5 = function(name,YearOfBirth,job) {
+    this.name = name,
+    this.YearOfBirth = YearOfBirth,
+    this.job = job
+}
+
+Person5.prototype.calculateAge = 
+    function() {
+        var age = new Date().getFullYear - this.YearOfBirth;
+        console.log(age);
+    }
+
+var john5 = new Person5('john',1990,'teacher');
+
+// ES6
+
+class Person6 {
+    constructor (name,YearOfBirth,job) {
+        this.name = name;
+        this.YearOfBirth = YearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge() {
+        var age = new Date().getFullYear - this.YearOfBirth;
+        console.log(age);
+    }
+}
+
+const john6 = new Person6('john',1990,'teacher');
