@@ -47,36 +47,36 @@ console.log(retirement);
 // ES5 -- 
 
 
-function addFourAges (a,b,c,d) {
-    return a+b+c+d;
-}
+// function addFourAges (a,b,c,d) {
+//     return a+b+c+d;
+// }
 
-var sum1 = addFourAges(18,30,12,21);
-console.log(sum1);
+// var sum1 = addFourAges(18,30,12,21);
+// console.log(sum1);
 
-var ages = [18,30,12,21];
-var sum2 = addFourAges.apply(null, ages);
-console.log(sum2);
+// var ages = [18,30,12,21];
+// var sum2 = addFourAges.apply(null, ages);
+// console.log(sum2);
 
 
 // applying values from an array to a function and passing them as an argument.
 
-const max3 = addFourAges(...ages);
-console.log(max3);
+// const max3 = addFourAges(...ages);
+// console.log(max3);
 
 // combining arrays with the spread operator
 
-const familySmith = ['john','jame', 'mark'];
-const familyMiller = ['mary', 'bob', 'add'];
-const bigFamily = [...familySmith, 'lilly',...familyMiller];
-console.log(bigFamily);
+// const familySmith = ['john','jame', 'mark'];
+// const familyMiller = ['mary', 'bob', 'add'];
+// const bigFamily = [...familySmith, 'lilly',...familyMiller];
+// console.log(bigFamily);
 
 // using spread operator on node lists 
-const h = document.querySelector('h1');
-const boxes = document.querySelectorAll('.box');
-const all = [h, ...boxes];
+// const h = document.querySelector('h1');
+// const boxes = document.querySelectorAll('.box');
+// const all = [h, ...boxes];
 
-Array.from(all).forEach(cur => cur.style.color = 'white');
+// Array.from(all).forEach(cur => cur.style.color = 'white');
 
 // Rest paramaters
 // arguments are special reference like 'this'
@@ -141,20 +141,20 @@ isFullAge6(16, 1990,1999,1965);
 
 // es6
 
-function SmithPerson (firstName, YearOfBirth, lastName = 'smith', nationality = 'american' ) {
+// function SmithPerson (firstName, YearOfBirth, lastName = 'smith', nationality = 'american' ) {
    
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.YearOfBirth = YearOfBirth;
-    this.nationality = nationality
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.YearOfBirth = YearOfBirth;
+//     this.nationality = nationality
 
-}
+// }
 
-var john = new SmithPerson('john', 1990);
-console.log(john);
+// var john = new SmithPerson('john', 1990);
+// console.log(john);
 
-var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
-console.log(emily);
+// var emily = new SmithPerson('Emily', 1983, 'Diaz', 'spanish');
+// console.log(emily);
 
 
 // ES6 -- maps is a new key value structure in ES6 you can use anything as the key -- with objects you are limited to strings.  You can use functions as a key
@@ -171,34 +171,34 @@ console.log(emily);
 // it's easy to get the size of the map using the size propertie
 // it's easy to add and remove data from a map
 
-const question = new Map();
-question.set('question', 'What is the offical name of the latest JavaScript version?'); 
-question.set(1, 'ES5');
-question.set(2, 'ES6');
-question.set(3, 'ES2015');
-question.set(4, 'ES7');
-question.set('correct', 3);
-question.set(true, 'Correct Answer');
-question.set(false, 'Wrong answer, please try again');
+// const question = new Map();
+// question.set('question', 'What is the offical name of the latest JavaScript version?'); 
+// question.set(1, 'ES5');
+// question.set(2, 'ES6');
+// question.set(3, 'ES2015');
+// question.set(4, 'ES7');
+// question.set('correct', 3);
+// question.set(true, 'Correct Answer');
+// question.set(false, 'Wrong answer, please try again');
 
-// console.log(question.get('question'));
-// console.log(question.size); // prototype option
+// // console.log(question.get('question'));
+// // console.log(question.size); // prototype option
 
-if (question.has(4)) {
-    // question.delete(4);
-    console.log('Answer 4 is here');
-}
+// if (question.has(4)) {
+//     // question.delete(4);
+//     console.log('Answer 4 is here');
+// }
 
-// question.clear();
+// // question.clear();
 
-question.forEach((value, key ) => console.log(`this is ${key}, and it is set to ${value}`));
+// question.forEach((value, key ) => console.log(`this is ${key}, and it is set to ${value}`));
 
-for (let [key, value] of question.entries()) {
- //   console.log(`this is ${key}, and it is set to ${value}`);
-    if (typeof(key) === 'number') {
-        console.log(`Answer ${key} ${value}`);
-    }
-}
+// for (let [key, value] of question.entries()) {
+//  //   console.log(`this is ${key}, and it is set to ${value}`);
+//     if (typeof(key) === 'number') {
+//         console.log(`Answer ${key} ${value}`);
+//     }
+// }
 
 // const ans = parseInt(prompt('Write the correct answer'));
 // console.log(question.get(ans === question.get('correct')));
@@ -210,19 +210,71 @@ for (let [key, value] of question.entries()) {
 
 // ES5 
 
-var Person5 = function(name,YearOfBirth,job) {
-    this.name = name,
-    this.YearOfBirth = YearOfBirth,
-    this.job = job
-}
+// var Person5 = function(name,YearOfBirth,job) {
+//     this.name = name,
+//     this.YearOfBirth = YearOfBirth,
+//     this.job = job
+// }
 
-Person5.prototype.calculateAge = 
-    function() {
-        var age = new Date().getFullYear - this.YearOfBirth;
-        console.log(age);
-    }
+// Person5.prototype.calculateAge = 
+//     function() {
+//         var age = new Date().getFullYear - this.YearOfBirth;
+//         console.log(age);
+//     }
 
-var john5 = new Person5('john',1990,'teacher');
+// var john5 = new Person5('john',1990,'teacher');
+
+// ES6
+
+// class Person6 {
+//     constructor (name,YearOfBirth,job) {
+//         this.name = name;
+//         this.YearOfBirth = YearOfBirth;
+//         this.job = job;
+//     }
+
+//     calculateAge() {
+//         var age = new Date().getFullYear - this.YearOfBirth;
+//         console.log(age);
+//     }
+// }
+
+// const john6 = new Person6('john',1990,'teacher');
+
+// Lecture - Classes and sub-class inheritatance
+
+// ES5 
+
+// var Person5 = function(name,YearOfBirth,job) {
+//     this.name = name;
+//     this.YearOfBirth = YearOfBirth;
+//     this.job = job;
+// }
+
+// Person5.prototype.calculateAge = 
+//     function() {
+//         var age = new Date().getFullYear() - this.YearOfBirth;
+//         console.log(age);
+//     }
+
+// var Athlete5 = function(name,YearOfBirth,job, olympicGames, medals) {
+//     Person5.call(this, name, YearOfBirth, job);
+//     this.olympicGames = olympicGames;
+//     this.medals = medals;
+// }
+
+// Athlete5.prototype = Object.create(Person5.prototype);
+
+// Athlete5.prototype.wonMedal = function() {
+//     this.medals++;
+//     console.log(this.medals);
+// }
+
+
+// var johnAthlete5 = new Athlete5('john',1993,'swimmer',3,10);
+
+// johnAthlete5.calculateAge();
+// johnAthlete5.wonMedal();
 
 // ES6
 
@@ -234,9 +286,24 @@ class Person6 {
     }
 
     calculateAge() {
-        var age = new Date().getFullYear - this.YearOfBirth;
+        var age = new Date().getFullYear() - this.YearOfBirth;
         console.log(age);
     }
 }
 
-const john6 = new Person6('john',1990,'teacher');
+class Athlete6 extends Person6 {
+    constructor(name,YearOfBirth,job,olympicGames,medals) {
+        super(name,YearOfBirth,job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+    wonMedal() {
+        this.medals ++;
+        console.log(this.medals);
+    }
+}
+
+const JohnAthlete6 = new Athlete6('john',1990,'swimmer',3,10);
+
+JohnAthlete6.calculateAge();
+JohnAthlete6.wonMedal();
