@@ -9,7 +9,35 @@
 <body>
     <h1>Asynchronous JavaScript</h1>
     <script>
-        
+        // async priciples
+        // const second = () => {
+        //    setTimeout(() => {
+        //         console.log('async hey there');
+        //    }, 2000);
+        // }
+
+        // const first = () => {
+        //     console.log("hey there");
+        //     second();
+        //     console.log('the end');
+        // }
+        // first();
+
+        const getIDs = new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    resolve([333,3444,433,3333]);
+                }, 1500);
+        });
+
+        getIDs
+            .then(IDs => {
+                console.log(Ids);
+            })
+            .catch(error=> {
+                console.log(error)
+            });
+
+
     </script>
 </body>
 </html>
