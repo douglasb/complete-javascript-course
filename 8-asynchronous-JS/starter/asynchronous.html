@@ -23,48 +23,94 @@
         // }
         // first();
 
-        const getIDs = new Promise((resolve,reject) => {
-                setTimeout(() => {
-                    resolve([333,3444,433,3333]);
-                }, 1500);
+         const getIDs = new Promise((resolve,reject) => {
+                 setTimeout(() => {
+                     resolve([333,3444,433,3333]);
+                 }, 1500);
+         })
+         const getRecipe = recID => {
+             return new Promise((resolve,reject) => {
+                 setTimeout(ID => {
+                     const recipe = {title: 'Fresh tomato pasta', 
+                     publisher: 'Jonas'};
+                     resolve(`${ID}: ${recipe.title}`);
+                 }, 1500, recID);
+             });
+         }
+         const getRelated = publisher => {   
+             return new Promise((resolve,reject) => {
+                 setTimeout(pub => {
+                   const recipe = {title: 'Italian Pizza', publisher: 'Jonas'};
+                  resolve(`${pub}: ${recipe.title}`);
+                 }, 1500, publisher)
+             });
+         };
+
+        // getIDs
+        //     .then(IDs => {
+        //         console.log(IDs);
+        //         return getRecipe(IDs[2]);
+        //     })
+        //     .then(recipe => {
+        //         console.log(recipe);
+        //         return getRelated('Jonas');
+        //     })
+        //     .then(recipe => {
+        //         console.log(recipe);
+        //     })
+        //     .catch(error =>{
+        //         console.log(error)
+         //   });
+
+
+    // async await
+    // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
+    // The async function declaration defines an asynchronous function, which returns an AsyncFunction object. An asynchronous function is a function which operates asynchronously via the event loop, using an implicit Promise to return its result. But the syntax and structure of your code using async functions is much more like using standard synchronous functions.
+
+    /*
+     function resolveAfter2Seconds() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+            resolve('resolved');
+            }, 2000);
         });
+        }
 
-        const getRecipe = recID => {
-            return new Promise((resolve,reject) => {
-                setTimeout(ID => {
-                    const recipe = {title: 'Fresh tomato pasta', 
-                    publisher: 'Jonas'};
-                    resolve(`${ID}: ${recipe.title}`);
-                }, 1500, recID)
+        async function asyncCall() {
+        console.log('calling');
+        var result = await resolveAfter2Seconds();
+        console.log(result);
+        // expected output: 'resolved'
+        }
 
-            });
-        };
+        asyncCall();
+*/
 
-        const getRelated = publisher => {   
-            return new Promise((resolve,reject) => {
-                setTimeout(pub => {
-                  const recipe = {title: 'Italian Pizza', publisher: 'Jonas'};
-                 resolve(`${pub}: ${recipe.title}`);
-                }, 1500, publisher)
-            });
-        };
 
-        getIDs
-            .then(IDs => {
-                console.log(IDs);
-                return getRecipe(IDs[2]);
-            })
-            .then(recipe => {
-                console.log(recipe);
-                return getRelated('Jonas');
-            })
-            .then(recipe => {
-                console.log(recipe);
-            })
-            .catch(error =>{
-                console.log(error)
-            });
 
+    async function getRecipiesAW() {
+        const IDs = await getIDs   // get promise
+        console.log(IDs);
+        const recipe = await getRecipe(IDs[2]);
+        console.log(recipe);
+        const realted = await getRelated('Douglas Brown');
+        console.log(realted);
+        
+        return recipe;  // you must return a promise to use .then below
+    }
+
+    getRecipiesAW().then(result => console.log(`${result} is the best`));
+
+
+    // ajax lecture using fetch and promises
+    // cors issues with api requests were fixed by using a plugin for cors issues == Moesif Cors plugin for the browswer.
+
+    fetch
+        ('https:/www.metaweather.com/api/location/2487956') 
+        .then(result =>  {
+            console.log(result);
+        })
+        .catch(error => console.log(error));
 
     </script>
 </body>
