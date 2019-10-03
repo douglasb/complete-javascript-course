@@ -1,0 +1,17 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "forkify project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "douglas",
+  "license": "ISC",
+  "devDependencies": {
+    "install": "^0.13.0",
+    "live-server": "^1.2.1",
+    "npm": "^6.11.3",
+    "webpack": "^4.41.0"
+  }
+}
