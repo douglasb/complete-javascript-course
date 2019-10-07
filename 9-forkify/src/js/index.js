@@ -1,5 +1,7 @@
 // Global app controller
 
-import num from './test';
+import num from './test'
+// require("@babel/polyfill");
 
-console.log(`I imported ${num} from another module!`);
+const x = 23;
+console.log(`I imported ${num} from another module! Variable x is ${x}.`);
