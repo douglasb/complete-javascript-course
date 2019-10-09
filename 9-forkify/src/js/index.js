@@ -1,19 +1,51 @@
+import Search from './models/Search';
+import * as searchView from './views/searchView';
+import {elements} from './views/base';
 
-import axios from 'axios';  // importing npm packages dirctly into the app
 
-async function getResults(query) {
-    const key = '986b523ea59363c4493ecf43555b9efa';
-    try {
-        const res = await axios(`https://www.food2fork.com/api/search?key=${key}&q=${query}`);
-        const recipes = res.data.recipes;
-        console.log(recipes);
-    }
-    catch(error) {
-        alert(error);
-    }
+
+
+/** Global State of the app 
+ *  - Search object
+ *  - Current recipe object
+ *  - Shopping list object
+ *  - Liked recipes
+*/
+
+const state = {
+
+
 }
 
-getResults('pizza');
+const controlSearch = async () => {   // this construtor is async because it has to handle promises
+        // Get the query from the view
+        const query = searchView.getInput; //TODO 
+        console.log(query);
 
-// 986b523ea59363c4493ecf43555b9efa
-// https://www.food2fork.com/api/search
+        if(query) {
+            // 2 new search object and add to state
+            state.search = new Search(query);
+            // 3) prepare UI for results
+
+            // 4) Search for recipes
+            await state.search.getResults();  // await is required because the results of getResults is a promise
+
+            // 5) render results on UI
+            console.log(state.search.result);
+        }
+}
+
+
+elements.searchForm.addEventListener('submit', e =>{
+        e.preventDefault();
+        controlSearch();
+});
+
+
+// const search = new Search('pizza');
+// console.log(search);
+
+//search.getResults();
+
+// putting all controllers into one file
+// managing states 
