@@ -31,7 +31,7 @@ const controlSearch = async () => {   // this construtor is async because it has
             await state.search.getResults();  // await is required because the results of getResults is a promise
 
             // 5) render results on UI
-            console.log(state.search.result);
+            searchView.renderResults(state.search.result);
         }
 }
 
