@@ -20,13 +20,14 @@ const state = {
 const controlSearch = async () => {   // this construtor is async because it has to handle promises
         // Get the query from the view
         const query = searchView.getInput; //TODO 
-        console.log(query);
+
 
         if(query) {
             // 2 new search object and add to state
             state.search = new Search(query);
             // 3) prepare UI for results
-
+                searchView.clearInput();
+                searchView.clearResults();
             // 4) Search for recipes
             await state.search.getResults();  // await is required because the results of getResults is a promise
 
