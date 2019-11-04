@@ -46,11 +46,49 @@ const renderRecipe = recipe => {
             </a>
          </li>
         `;
-        console.log(markup);
         elements.searchResList.insertAdjacentHTML('beforeend', markup);
 }
 
-export const renderResults = recipes => {
-    
-    recipes.forEach(renderRecipe);
-}
+// FIXME: eorro throwing on adjacentHTML -- say it is not an object
+// type 'prev' or 'next'
+const createButton = (page, type) => `
+        <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page-1 : page+1}>
+            <svg class="search__icon">
+                <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+            </svg>
+            <span>Page ${type === 'prev' ? page-1 : page+1}</span>
+        </button>
+        `;
+
+const renderButtons = (page, numResults, resPerPage) => {
+    const pages = Math.ceil(numResults / resPerPage);
+
+    let button;
+
+    if (page === 1 && pages > 1) {
+        // button for next page
+        button = createButton(page, 'next');
+    } else if (page < pages) {  // create both buttons
+        button = `
+                ${createButton(page, 'next')}
+                ${createButton(page, 'prev')}
+        `;
+    } else if (page === pages && pages > 1) {
+        // button for previous page
+        button = createButton(page, 'prev');
+        console.log(button = createButton(page, 'prev'));
+    }
+    // render the button in the dom
+    elements.searchResPages.insertAdjacentElement('afterbegin', button);
+
+};
+
+export const renderResults = (recipes, page=1,resPerPage=10) => {  
+    // render results of current page
+    const start = (page - 1) * resPerPage;
+    const end = page * resPerPage;
+    recipes.slice(start, end).forEach(renderRecipe);
+
+    // render pagination
+    renderButtons(page, recipes.length, resPerPage);
+};

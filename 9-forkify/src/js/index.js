@@ -1,6 +1,6 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView';
-import {elements} from './views/base';
+import {elements, renderLoader, clearLoader} from './views/base';
 
 
 
@@ -19,7 +19,7 @@ const state = {
 
 const controlSearch = async () => {   // this construtor is async because it has to handle promises
         // Get the query from the view
-        const query = searchView.getInput; //TODO 
+        const query = searchView.getInput;
 
 
         if(query) {
@@ -28,10 +28,13 @@ const controlSearch = async () => {   // this construtor is async because it has
             // 3) prepare UI for results
                 searchView.clearInput();
                 searchView.clearResults();
+                renderLoader(elements.searchRes);
+
             // 4) Search for recipes
             await state.search.getResults();  // await is required because the results of getResults is a promise
 
             // 5) render results on UI
+            clearLoader();
             searchView.renderResults(state.search.result);
         }
 }
