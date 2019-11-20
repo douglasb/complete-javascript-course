@@ -46,6 +46,15 @@ elements.searchForm.addEventListener('submit', e =>{
 });
 
 
+const inputs = document.querySelectorAll("input, select");
+
+                            inputs.forEach(function (input) {
+                              input.addEventListener("invalid", function (event) {
+                                  event.preventDefault();
+                                  input.classList.add("error");
+                                  input.nextSibling.nextSibling.style.display = "block";
+                              }, false);
+
 // const search = new Search('pizza');
 // console.log(search);
 
