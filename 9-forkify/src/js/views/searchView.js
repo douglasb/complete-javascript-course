@@ -8,13 +8,9 @@ export const clearInput = () => {   // use curly braces here or we get an implic
 
 export const clearResults = () => {
     elements.searchResList.innerHTML = '';
+    elements.searchResPages.innerHTML = '';
 }
 
-// 'Pasta with Tomato and Spinich'
-/*
-0
-
-*/
 
 const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
@@ -49,14 +45,12 @@ const renderRecipe = recipe => {
         elements.searchResList.insertAdjacentHTML('beforeend', markup);
 }
 
-// FIXME: eorro throwing on adjacentHTML -- say it is not an object
-// type 'prev' or 'next'
 const createButton = (page, type) => `
         <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page-1 : page+1}>
-            <svg class="search__icon">
-                <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
-            </svg>
-            <span>Page ${type === 'prev' ? page-1 : page+1}</span>
+            <span>Page ${type === 'prev' ? page-1 : page+1}</span>    
+                <svg class="search__icon">
+                    <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+                </svg>
         </button>
         `;
 
@@ -79,7 +73,7 @@ const renderButtons = (page, numResults, resPerPage) => {
         console.log(button = createButton(page, 'prev'));
     }
     // render the button in the dom
-    elements.searchResPages.insertAdjacentElement('afterbegin', button);
+    elements.searchResPages.insertAdjacentHTML('afterbegin', button);
 
 };
 

@@ -1,8 +1,9 @@
+// data
 import Search from './models/Search';
+// business logic -- controler
 import * as searchView from './views/searchView';
+// variables and dependencies
 import {elements, renderLoader, clearLoader} from './views/base';
-
-
 
 
 /** Global State of the app 
@@ -45,15 +46,15 @@ elements.searchForm.addEventListener('submit', e =>{
         controlSearch();
 });
 
+elements.searchResPages.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    if(btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result,goToPage);
+    }
+})
 
-const inputs = document.querySelectorAll("input, select");
-
-                            inputs.forEach(function (input) {
-                              input.addEventListener("invalid", function (event) {
-                                  event.preventDefault();
-                                  input.classList.add("error");
-                                  input.nextSibling.nextSibling.style.display = "block";
-                              }, false);
 
 // const search = new Search('pizza');
 // console.log(search);
