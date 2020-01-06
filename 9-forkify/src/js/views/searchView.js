@@ -1,8 +1,12 @@
 import {elements} from './base';
 
-export const getInput = () => elements.searchInput.value;
+export const getInput = () => { 
+    
+    let result = elements.searchInput.value;
+    return result.trim();
+}; 
 
-export const clearInput = () => {   // use curly braces here or we get an implicit return
+export const clearInput = () => {  
     elements.searchInput.value = '';
 }
 

@@ -1,3 +1,6 @@
+// Index.js Combines the business logic and the data to render results in index.html
+// index.js -> index.html
+
 // data
 import Search from './models/Search';
 // business logic -- controler
