@@ -1,9 +1,8 @@
 import axios from 'axios'; 
+// FIXME(douglas): passing the value from the search input box - function isn't translating the value
 export default class Search {
     constructor(query) {
-        console.log(query);
         this.query = query;
-
     }
     async getResults() {
         const key = '986b523ea59363c4493ecf43555b9efa';

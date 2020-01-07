@@ -1,10 +1,8 @@
 import {elements} from './base';
 
-export const getInput = () => { 
-    
-    let result = elements.searchInput.value;
-    return result.trim();
-}; 
+
+
+export const getInput = () => {elements.searchInput.value; }
 
 export const clearInput = () => {  
     elements.searchInput.value = '';
@@ -14,7 +12,6 @@ export const clearResults = () => {
     elements.searchResList.innerHTML = '';
     elements.searchResPages.innerHTML = '';
 }
-
 
 const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
@@ -81,12 +78,13 @@ const renderButtons = (page, numResults, resPerPage) => {
 
 };
 
-export const renderResults = (recipes, page=1,resPerPage=10) => {  
-    // render results of current page
+export const renderResults = (recipes, page = 1, resPerPage = 10) => {
+    // render results of currente page
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
+
     recipes.slice(start, end).forEach(renderRecipe);
 
-    // render pagination
+    // render pagination buttons
     renderButtons(page, recipes.length, resPerPage);
 };

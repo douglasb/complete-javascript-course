@@ -23,8 +23,8 @@ const state = {
 
 const controlSearch = async () => {   // this construtor is async because it has to handle promises
         // Get the query from the view
+       debugger;
         const query = searchView.getInput;
-
 
         if(query) {
             // 2 new search object and add to state
